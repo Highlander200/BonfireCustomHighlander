@@ -59,7 +59,7 @@ namespace Bonfire
             if (hm != null && hm.hp < 5000 && !isAlreadyDead)
             {
                 LogDebug($@"Vanilla HP for {enemy.name} = {hm.hp}");
-                hm.hp *= (int)((1.25 + (double)Dreamers / 3) * (2.5 / (1.0 + Math.Exp(-0.05 * Status.CurrentLv))));
+                hm.hp *= (int)(1.25 + (double)Dreamers / 3);
                 LogDebug($@"Bonfire HP for {enemy.name} = {hm.hp}");
 
                 hm.SetGeoSmall(ls.IncreaseGeo(GetGeo("small", hm), Status.LuckStat));
@@ -310,11 +310,7 @@ namespace Bonfire
         }
         
 
-<<<<<<< HEAD
         public override string GetVersion() => "3.0.1";
-=======
-        public override string GetVersion() => "2.1.1";
->>>>>>> parent of 05deae0 (Turned bench into bonfy!)
         public int HitsSinceShielded { get; set; } = 0;
         public int Dreamers;
         public bool Crit { get; set; } = false;

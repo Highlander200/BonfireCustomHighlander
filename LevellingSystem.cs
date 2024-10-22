@@ -242,7 +242,7 @@ namespace Bonfire
         }
 
 
-        public int NailDamage(int totalStr) => (int)Math.Round((5 + 4 * PlayerData.instance.nailSmithUpgrades) * Math.Pow(1.25, Math.Log(totalStr, 2.0)));
+        public int NailDamage(int totalStr) => (int)Math.Round((5 + 4 * PlayerData.instance.nailSmithUpgrades) - 0.75f + 3*totalStr/4 + PlayerData.instance.nailSmithUpgrades* totalStr/10);
 
 
         public int ExtraMasks(int totalRes) => (int)Math.Round(-0.4 + 2.6 * Math.Log(totalRes));
@@ -376,16 +376,16 @@ namespace Bonfire
         public int IncreaseGeo(int droppedGeo, int totalLck) => (int)(droppedGeo * (1f + (totalLck - 1) / 20f));
 
 
-        public int CritDamage(int totalDex, int nailDamage) => (int)(nailDamage * (1.2 + Math.Log(totalDex)));
+        public int CritDamage(int totalDex, int nailDamage) => (int)(nailDamage * (1.4 + Math.Log(totalDex)));
 
 
-        public int SpellDamage(int baseDamage, int totalInt) => (int)Math.Round(baseDamage * Math.Pow(1.25, Math.Log(totalInt, 2.0)));
+        public int SpellDamage(int baseDamage, int totalInt) => (int)Math.Round(baseDamage * Math.Pow(1.25+totalInt/50f, Math.Log(totalInt, 2.0)));
 
 
-        public int ExtraSoul(int totalWsdm, int baseSoul) => (int)Math.Round(baseSoul + 5.0 * Math.Log(totalWsdm));
+        public int ExtraSoul(int totalWsdm, int baseSoul) => (int)Math.Round(baseSoul + (double)totalWsdm);
 
 
-        public int SoulRegen(int totalWsdm) => (int)Math.Round(0.32 + 0.68 * Math.Log(totalWsdm));
+        public int SoulRegen(int totalWsdm) => (int)Math.Round(totalWsdm/4f);
 
 
         public float IFrames(int totalRes) => (float)(3.25 / (1.0 + 2.4 * Math.Exp(-0.07 * (totalRes - 1))));
